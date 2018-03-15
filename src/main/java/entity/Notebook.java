@@ -1,15 +1,24 @@
 package entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Notebook {
 
-    private Long id;
+    private Integer id;
     private String serial;
     private String vendor;
     private String model;
     private Date date;
     private Double price;
+
+    public Notebook(Integer id, String serial, String vendor, String model, Date date, Double price) {
+        this.id = id;
+        this.serial = serial;
+        this.vendor = vendor;
+        this.model = model;
+        this.date = date;
+        this.price = price;
+    }
 
     public Notebook(String serial, String vendor, String model, Date date, Double price) {
         this.serial = serial;
@@ -22,11 +31,11 @@ public class Notebook {
     public Notebook() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -7,10 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefWidth="1050.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainController">
+<AnchorPane prefWidth="1050.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <children>
-      <TableView fx:id="tblList" prefWidth="569.0">
+      <TableView fx:id="tblList" onMouseClicked="#tblListOnMouseClick" prefWidth="569.0">
         <columns>
           <TableColumn fx:id="clnNum" prefWidth="38.0" text="№" />
           <TableColumn fx:id="clnSerial" prefWidth="112.0" text="Serial" />
