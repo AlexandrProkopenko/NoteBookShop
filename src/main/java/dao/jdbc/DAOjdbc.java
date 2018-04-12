@@ -4,6 +4,8 @@ import dao.NotebookDAO;
 import entity.Notebook;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.List;
@@ -13,6 +15,7 @@ public class DAOjdbc implements NotebookDAO {
     private static String url = "jdbc:mysql://localhost:3306/notebookshop ?serverTimezone=UTC&useSSL=false";
     private static String login = "root";
     private static String password = "1111";
+    private Logger log = LoggerFactory.getLogger(NotebookDAO.class);
 
     public Integer create(Notebook notebook) {
         try (Connection c = DriverManager.getConnection(
@@ -35,7 +38,7 @@ public class DAOjdbc implements NotebookDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("new notebook created");
+        log.info("new notebook created");
         return notebook.getId();
     }
 
@@ -62,6 +65,7 @@ public class DAOjdbc implements NotebookDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        log.info("notebook has been read");
         return notebook;
     }
 
@@ -86,7 +90,7 @@ public class DAOjdbc implements NotebookDAO {
             e.printStackTrace();
             return false;
         }
-        System.out.println("update success");
+        log.info("update success");
         return true;
     }
 
@@ -102,7 +106,7 @@ public class DAOjdbc implements NotebookDAO {
             e.printStackTrace();
             return false;
         }
-        System.out.println("delete success");
+        log.info("delete success");
         return true;
     }
 
