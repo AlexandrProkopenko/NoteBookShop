@@ -1,14 +1,31 @@
 package entity;
 
+import javax.persistence.*;
 import java.sql.Date;
 
+
+@Entity
+@Table(name = "notebooks")
 public class Notebook {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Column(name = "serial")
     private String serial;
+
+    @Column(name = "vendor")
     private String vendor;
+
+    @Column(name = "model")
     private String model;
+
+//    @Temporal(TemporalType.DATE)
+    @Column(name = "date")
     private Date date;
+
+    @Column(name = "price")
     private Double price;
 
     public Notebook(Integer id, String serial, String vendor, String model, Date date, Double price) {

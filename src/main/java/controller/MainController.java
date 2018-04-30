@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import service.NBService;
+import service.NotebookService;
+import service.hibernate.NotebookServiceImpl;
+import service.jdbc.NBService;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -17,7 +19,7 @@ public class MainController {
         Text, Date, Price, TextAndPrice, TextAndDate, DateAndPrice, All
     }
 
-          private NBService service;
+          private NotebookService service;
           private Stage mainStage;
           private Notebook currentNotebook;
           private FindMode mode;
@@ -45,7 +47,7 @@ public class MainController {
 
     @FXML
     private void initialize(){
-        service = new NBService();
+        service = new NotebookServiceImpl();
         notebooks = service.getAll();
 
         fldDate.setValue(LocalDate.now());
@@ -135,7 +137,7 @@ public class MainController {
                     fldDate.getValue(),
                     fldPrice.getText() )){
 
-            service.create(new Notebook(
+            service.save(new Notebook(
                     fldSerial.getText(),
                     fldVendor.getText(),
                     fldModel.getText(),
@@ -249,18 +251,18 @@ public class MainController {
 //            ));
 //        }
 
-        if (correctPriceInput(fldPriceFrom.getText()) &
-                correctPriceInput(fldPriceTo.getText()) &
-                correctDateInput( Date.valueOf( fldDateTo.getValue())) &
-                !fldFind.getText().equals(""))
-        {
-            notebooks=service.findBetweenPriceLtDateBtVendor(
-                    Double.parseDouble(fldPriceFrom.getText()) ,
-                    Double.parseDouble(fldPriceTo.getText()) ,
-                    Date.valueOf( fldDateTo.getValue()),
-                    fldFind.getText()
-            );
-        }
+//        if (correctPriceInput(fldPriceFrom.getText()) &
+//                correctPriceInput(fldPriceTo.getText()) &
+//                correctDateInput( Date.valueOf( fldDateTo.getValue())) &
+//                !fldFind.getText().equals(""))
+//        {
+//            notebooks=service.findBetweenPriceLtDateBtVendor(
+//                    Double.parseDouble(fldPriceFrom.getText()) ,
+//                    Double.parseDouble(fldPriceTo.getText()) ,
+//                    Date.valueOf( fldDateTo.getValue()),
+//                    fldFind.getText()
+//            );
+//        }
 
 //        notebooks = service.findBetweenDate(
 //                Date.valueOf( fldDateFrom.getValue()),

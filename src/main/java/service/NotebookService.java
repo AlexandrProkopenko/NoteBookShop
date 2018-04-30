@@ -1,16 +1,15 @@
-package dao;
+package service;
 
 import entity.Notebook;
 import javafx.collections.ObservableList;
 
-import java.time.LocalDate;
 import java.util.List;
 
-public interface NotebookDAO {
+public interface NotebookService {
 
-    boolean create(Notebook notebook);
+    boolean save(Notebook notebook);
 
-    Notebook read(Integer id);
+    Notebook getById(Integer id);
 
     boolean update(Notebook notebook);
 

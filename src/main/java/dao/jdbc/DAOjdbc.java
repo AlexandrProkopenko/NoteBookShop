@@ -17,7 +17,7 @@ public class DAOjdbc implements NotebookDAO {
     private static String password = "1111";
     private Logger log = LoggerFactory.getLogger(NotebookDAO.class);
 
-    public Integer create(Notebook notebook) {
+    public boolean create(Notebook notebook) {
         try (Connection c = DriverManager.getConnection(
                 url, login, password)){
 
@@ -34,12 +34,12 @@ public class DAOjdbc implements NotebookDAO {
             statement.setDouble(5, notebook.getPrice());
 
             statement.execute();
-
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         log.info("new notebook created");
-        return notebook.getId();
+        return false;
     }
 
     public Notebook read(Integer id) {
@@ -110,7 +110,7 @@ public class DAOjdbc implements NotebookDAO {
         return true;
     }
 
-    public List<Notebook> getAll() {
+    public ObservableList<Notebook> getAll() {
         ObservableList<Notebook> list = FXCollections.observableArrayList();
 
         try (Connection c =

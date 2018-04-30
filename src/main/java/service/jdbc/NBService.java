@@ -1,4 +1,4 @@
-package service;
+package service.jdbc;
 
 import dao.jdbc.DAOjdbc;
 import entity.Notebook;
@@ -12,11 +12,11 @@ public class NBService {
 
     private DAOjdbc daoJDBC = new DAOjdbc();
 
-    public Integer create(Notebook notebook){
+    public boolean create(Notebook notebook){
         if (notebook!=null)
             return daoJDBC.create(notebook);
         else
-            return null;
+            return false;
     }
 
     public Notebook read(Integer id){
