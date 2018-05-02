@@ -20,6 +20,9 @@ public class Processor {
     @OneToMany(mappedBy = "processor")
     private List<Notebook> owners;
 
+    public Processor() {
+    }
+
     public Processor(String title, Integer fraquency) {
         this.title = title;
         this.fraquency = fraquency;
@@ -55,5 +58,14 @@ public class Processor {
 
     public void setOwners(List<Notebook> owners) {
         this.owners = owners;
+    }
+
+    @Override
+    public String toString() {
+        return "Processor{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", fraquency=" + fraquency +
+                '}';
     }
 }

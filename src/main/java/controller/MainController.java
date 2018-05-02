@@ -161,7 +161,8 @@ public class MainController {
             fldDate.setValue(currentNotebook.getDate().toLocalDate());
             fldPrice.setText(currentNotebook.getPrice().toString());
 
-            System.out.println(currentNotebook);
+            System.out.println(currentNotebook );
+            System.out.println(currentNotebook.getProcessor());
         }
     }
 
