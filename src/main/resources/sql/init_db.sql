@@ -2,12 +2,24 @@ CREATE DATABASE IF NOT EXISTS `NotebookShop`;
 
 USE `NotebookShop`;
 
-CREATE TABLE IF NOT EXISTS `Notebooks` (
-  `id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `serial` VARCHAR(100) NOT NULL,
-  `vendor` VARCHAR(100) NOT NULL,
-  `model` VARCHAR(100) NOT NULL,
-  `date` DATE NOT NULL,
-  `price` VARCHAR(100) NOT NULL
-) ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS notebooks
+(
+  id           INT          NOT NULL
+    PRIMARY KEY,
+  date         DATE         NULL,
+  model        VARCHAR(255) NULL,
+  price        DOUBLE       NULL,
+  serial       VARCHAR(255) NULL,
+  vendor       VARCHAR(255) NULL,
+  processor_id BIGINT       NULL
+)
+  ENGINE = MyISAM;
 
+CREATE TABLE IF NOT EXISTS processors
+(
+  id        BIGINT       NOT NULL
+    PRIMARY KEY,
+  fraquency INT          NULL,
+  title     VARCHAR(255) NULL
+)
+  ENGINE = MyISAM;

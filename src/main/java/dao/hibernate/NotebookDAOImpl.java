@@ -8,8 +8,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.util.List;
-
 public class NotebookDAOImpl implements NotebookDAO {
 
     private SessionFactory factory;
@@ -22,6 +20,8 @@ public class NotebookDAOImpl implements NotebookDAO {
     public boolean create(Notebook notebook) {
         Session session = factory.openSession();
         try {
+//            System.out.println("dao");
+//            System.out.println(notebook);
             session.beginTransaction();
             session.save(notebook);
             session.getTransaction().commit();
@@ -56,6 +56,7 @@ public class NotebookDAOImpl implements NotebookDAO {
         try {
             session.beginTransaction();
             session.update(notebook);
+            session.getTransaction().commit();
             return true;
         }catch (HibernateException e){
             e.printStackTrace();
@@ -72,6 +73,7 @@ public class NotebookDAOImpl implements NotebookDAO {
         try {
             session.beginTransaction();
             session.delete(notebook);
+            session.getTransaction().commit();
             return true;
         }catch (HibernateException e){
             e.printStackTrace();

@@ -49,7 +49,9 @@ public class MainController {
     private void initialize(){
         service = new NotebookServiceImpl();
         notebooks = service.getAll();
-
+//        for (Notebook n: notebooks){
+//            System.out.println(n);
+//        }
         fldDate.setValue(LocalDate.now());
         fldDateTo.setValue(LocalDate.now());
         fldDateFrom.setValue(LocalDate.of(2010,1,1));
@@ -136,7 +138,7 @@ public class MainController {
                     fldModel.getText(),
                     fldDate.getValue(),
                     fldPrice.getText() )){
-
+            System.out.println("controller");
             service.save(new Notebook(
                     fldSerial.getText(),
                     fldVendor.getText(),
@@ -152,11 +154,15 @@ public class MainController {
     @FXML
     private void tblListOnMouseClick(){
         currentNotebook = tblList.getSelectionModel().getSelectedItem();
-        fldSerial.setText(currentNotebook.getSerial());
-        fldVendor.setText(currentNotebook.getVendor());
-        fldModel.setText(currentNotebook.getModel());
-        fldDate.setValue( currentNotebook.getDate().toLocalDate() );
-        fldPrice.setText(currentNotebook.getPrice().toString());
+        if(currentNotebook != null) {
+            fldSerial.setText(currentNotebook.getSerial());
+            fldVendor.setText(currentNotebook.getVendor());
+            fldModel.setText(currentNotebook.getModel());
+            fldDate.setValue(currentNotebook.getDate().toLocalDate());
+            fldPrice.setText(currentNotebook.getPrice().toString());
+
+            System.out.println(currentNotebook);
+        }
     }
 
     @FXML

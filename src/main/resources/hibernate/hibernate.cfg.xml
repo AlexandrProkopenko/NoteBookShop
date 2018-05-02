@@ -17,6 +17,7 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping class="entity.Notebook"/>
+        <mapping class="entity.Processor"/>
 
     </session-factory>
 

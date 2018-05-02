@@ -9,7 +9,7 @@ import java.sql.Date;
 public class Notebook {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @Column(name = "serial")
@@ -27,6 +27,10 @@ public class Notebook {
 
     @Column(name = "price")
     private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "processor_id")
+    private Processor processor;
 
     public Notebook(Integer id, String serial, String vendor, String model, Date date, Double price) {
         this.id = id;
@@ -94,6 +98,14 @@ public class Notebook {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Processor getProcessor() {
+        return processor;
+    }
+
+    public void setProcessor(Processor processor) {
+        this.processor = processor;
     }
 
     @Override

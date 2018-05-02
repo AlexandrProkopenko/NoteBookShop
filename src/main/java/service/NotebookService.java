@@ -3,7 +3,6 @@ package service;
 import entity.Notebook;
 import javafx.collections.ObservableList;
 
-import java.util.List;
 
 public interface NotebookService {
 
